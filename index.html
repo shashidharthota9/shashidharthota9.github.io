@@ -87,6 +87,29 @@
             box-shadow: 0 0 15px #7c3aed, 0 0 30px #4f46e5;
         }
 
+        /* Unified Menu Styling */
+        #menu-container {
+            /* Mobile: Fullscreen Overlay */
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0;
+        }
+
+        #menu-container.is-open {
+            opacity: 1;
+        }
+        
+        /* Desktop: Sidebar Menu */
+        @media (min-width: 768px) {
+            #menu-container {
+                opacity: 1; /* Always visible for transform */
+                transform: translateX(100%);
+                transition: transform 0.3s ease-in-out;
+            }
+            #menu-container.is-open {
+                transform: translateX(0);
+            }
+        }
+
     </style>
 </head>
 <body class="text-gray-700">
@@ -98,29 +121,27 @@
                 <div class="text-2xl font-bold gradient-text">
                     <a href="#">Shashidhar Thota</a>
                 </div>
-                <nav class="hidden md:flex space-x-8">
-                    <a href="#about" class="text-gray-600 hover:text-indigo-600 transition duration-300 font-medium">About</a>
-                    <a href="#projects" class="text-gray-600 hover:text-indigo-600 transition duration-300 font-medium">Projects</a>
-                    <a href="#skills" class="text-gray-600 hover:text-indigo-600 transition duration-300 font-medium">Skills</a>
-                    <a href="#certifications" class="text-gray-600 hover:text-indigo-600 transition duration-300 font-medium">Certifications</a>
-                    <a href="#experience" class="text-gray-600 hover:text-indigo-600 transition duration-300 font-medium">My Journey</a>
-                    <a href="#contact" class="text-gray-600 hover:text-indigo-600 transition duration-300 font-medium">Contact</a>
-                </nav>
-                <button id="mobile-menu-button" class="md:hidden focus:outline-none">
-                    <i class="fas fa-bars text-indigo-600 text-2xl"></i>
+                <button id="menu-button" class="focus:outline-none text-2xl text-indigo-600 z-50">
+                    <i class="fas fa-bars"></i>
                 </button>
-            </div>
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4">
-                <a href="#about" class="block py-2 px-4 text-sm text-gray-600 hover:bg-indigo-50 rounded">About</a>
-                <a href="#projects" class="block py-2 px-4 text-sm text-gray-600 hover:bg-indigo-50 rounded">Projects</a>
-                <a href="#skills" class="block py-2 px-4 text-sm text-gray-600 hover:bg-indigo-50 rounded">Skills</a>
-                <a href="#certifications" class="block py-2 px-4 text-sm text-gray-600 hover:bg-indigo-50 rounded">Certifications</a>
-                <a href="#experience" class="block py-2 px-4 text-sm text-gray-600 hover:bg-indigo-50 rounded">My Journey</a>
-                <a href="#contact" class="block py-2 px-4 text-sm text-gray-600 hover:bg-indigo-50 rounded">Contact</a>
             </div>
         </div>
     </header>
+
+     <!-- Unified Menu Container -->
+    <div id="menu-container" class="fixed inset-0 pointer-events-none z-40 md:left-auto md:w-80">
+        <!-- Backdrop for mobile -->
+        <div id="menu-backdrop" class="absolute inset-0 bg-black/80 backdrop-blur-sm md:hidden"></div>
+        <!-- Menu Panel -->
+        <nav id="menu-panel" class="relative w-full h-full flex flex-col items-center justify-center md:items-start md:justify-start md:bg-white md:shadow-2xl md:pt-24 md:px-6">
+            <a href="#about" class="menu-link block py-4 text-3xl text-white md:text-xl md:text-gray-700 md:w-full md:rounded-lg md:px-4 hover:text-indigo-300 md:hover:bg-gray-100 md:hover:text-indigo-600 transition-colors">About</a>
+            <a href="#projects" class="menu-link block py-4 text-3xl text-white md:text-xl md:text-gray-700 md:w-full md:rounded-lg md:px-4 hover:text-indigo-300 md:hover:bg-gray-100 md:hover:text-indigo-600 transition-colors">Projects</a>
+            <a href="#skills" class="menu-link block py-4 text-3xl text-white md:text-xl md:text-gray-700 md:w-full md:rounded-lg md:px-4 hover:text-indigo-300 md:hover:bg-gray-100 md:hover:text-indigo-600 transition-colors">Skills</a>
+            <a href="#certifications" class="menu-link block py-4 text-3xl text-white md:text-xl md:text-gray-700 md:w-full md:rounded-lg md:px-4 hover:text-indigo-300 md:hover:bg-gray-100 md:hover:text-indigo-600 transition-colors">Certifications</a>
+            <a href="#experience" class="menu-link block py-4 text-3xl text-white md:text-xl md:text-gray-700 md:w-full md:rounded-lg md:px-4 hover:text-indigo-300 md:hover:bg-gray-100 md:hover:text-indigo-600 transition-colors">My Journey</a>
+            <a href="#contact" class="menu-link block py-4 text-3xl text-white md:text-xl md:text-gray-700 md:w-full md:rounded-lg md:px-4 hover:text-indigo-300 md:hover:bg-gray-100 md:hover:text-indigo-600 transition-colors">Contact</a>
+        </nav>
+    </div>
 
     <main>
         <!-- Hero Section -->
@@ -281,7 +302,7 @@
                            <i class="fas fa-graduation-cap text-white text-xs"></i>
                         </div>
                         <div class="md:ml-[55%] ml-12 bg-white p-0 rounded-xl shadow-lg border-l-4 border-indigo-500 overflow-hidden">
-                            <img src="image_ec3fbd.jpg" alt="University of Texas at Dallas" class="w-full h-40 object-cover">
+                            <img src="campus-2023-aerial.jpg" alt="University of Texas at Dallas" class="w-full h-40 object-cover">
                             <div class="p-6">
                                 <h3 class="text-xl font-bold text-gray-800">Master of Science, Business Analytics & AI</h3>
                                 <p class="text-indigo-600 font-semibold mt-1">University of Texas at Dallas</p>
@@ -310,7 +331,7 @@
                            <i class="fas fa-graduation-cap text-white text-xs"></i>
                         </div>
                         <div class="md:ml-[55%] ml-12 bg-white p-0 rounded-xl shadow-lg border-l-4 border-indigo-500 overflow-hidden">
-                             <img src="image_ec435e.jpg" alt="Vellore Institute of Technology" class="w-full h-40 object-cover">
+                             <img src="1286079-vit.webp" alt="Vellore Institute of Technology" class="w-full h-40 object-cover">
                             <div class="p-6">
                                 <h3 class="text-xl font-bold text-gray-800">Bachelor of Technology, ECE</h3>
                                 <p class="text-indigo-600 font-semibold mt-1">Vellore Institute of Technology</p>
@@ -344,70 +365,76 @@
     </footer>
 
     <script>
-        // --- Mobile menu toggle ---
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuButton = document.getElementById('menu-button');
+            const menuContainer = document.getElementById('menu-container');
+            const menuIcon = menuButton.querySelector('i');
+            const menuLinks = menuContainer.querySelectorAll('.menu-link');
 
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-
-        const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-        mobileMenuLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-            });
-        });
-
-        // --- Typing Animation ---
-        const typedTextSpan = document.getElementById("typed-text");
-        const textArray = ["Business Analytics & AI Enthusiast", "Data Scientist", "Problem Solver"];
-        const typingDelay = 100;
-        const erasingDelay = 50;
-        const newTextDelay = 2000;
-        let textArrayIndex = 0;
-        let charIndex = 0;
-
-        function type() {
-            if (charIndex < textArray[textArrayIndex].length) {
-                typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-                charIndex++;
-                setTimeout(type, typingDelay);
-            } else {
-                setTimeout(erase, newTextDelay);
-            }
-        }
-
-        function erase() {
-            if (charIndex > 0) {
-                typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
-                charIndex--;
-                setTimeout(erase, erasingDelay);
-            } else {
-                textArrayIndex++;
-                if (textArrayIndex >= textArray.length) textArrayIndex = 0;
-                setTimeout(type, typingDelay + 1100);
-            }
-        }
-
-        document.addEventListener("DOMContentLoaded", function() { 
-            if(textArray.length) setTimeout(type, newTextDelay + 250);
-        });
-
-        // --- Scroll Animations ---
-        const revealElements = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+            const toggleMenu = () => {
+                const isMenuOpen = menuContainer.classList.contains('is-open');
+                
+                menuContainer.classList.toggle('is-open');
+                menuContainer.classList.toggle('pointer-events-auto');
+                
+                if (isMenuOpen) {
+                    menuIcon.classList.remove('fa-times');
+                    menuIcon.classList.add('fa-bars');
+                } else {
+                    menuIcon.classList.remove('fa-bars');
+                    menuIcon.classList.add('fa-times');
                 }
-            });
-        }, {
-            threshold: 0.1
-        });
+            };
 
-        revealElements.forEach(el => {
-            observer.observe(el);
+            menuButton.addEventListener('click', toggleMenu);
+            menuLinks.forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+
+            // --- Typing Animation ---
+            const typedTextSpan = document.getElementById("typed-text");
+            const textArray = ["Business Analytics & AI Enthusiast", "Data Scientist", "Problem Solver"];
+            const typingDelay = 100;
+            const erasingDelay = 50;
+            const newTextDelay = 2000;
+            let textArrayIndex = 0;
+            let charIndex = 0;
+
+            function type() {
+                if (charIndex < textArray[textArrayIndex].length) {
+                    typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex++);
+                    setTimeout(type, typingDelay);
+                } else {
+                    setTimeout(erase, newTextDelay);
+                }
+            }
+
+            function erase() {
+                if (charIndex > 0) {
+                    typedTextSpan.textContent = textArray[textArrayIndex].substring(0, --charIndex);
+                    setTimeout(erase, erasingDelay);
+                } else {
+                    textArrayIndex = (textArrayIndex + 1) % textArray.length;
+                    setTimeout(type, typingDelay + 1100);
+                }
+            }
+
+            if (textArray.length) setTimeout(type, newTextDelay + 250);
+
+            // --- Scroll Animations ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            revealElements.forEach(el => {
+                observer.observe(el);
+            });
         });
     </script>
 </body>
